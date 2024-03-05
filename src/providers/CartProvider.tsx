@@ -88,7 +88,7 @@ const reducer = (state: CartStateType, action: ReducerAction) => {
   }
 };
 
-const useCartContext = (initCartState: CartStateType) => {
+const useCartContext = () => {
   const [state, dispatch] = useReducer(reducer, initCartState);
 
   const REDUCER_ACTIONS = useMemo(() => {
@@ -140,7 +140,7 @@ type ChildrenType = { children?: ReactElement | ReactElement[] };
 
 export const CartProvider = ({ children }: ChildrenType): ReactElement => {
   return (
-    <CartContext.Provider value={useCartContext(initCartState)}>
+    <CartContext.Provider value={useCartContext()}>
       {children}
     </CartContext.Provider>
   );
